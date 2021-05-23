@@ -1,25 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { Todos } from './components/Todos';
+import { AddTodo } from './components/AddTodo';
 
-function App() {
+export const App = () => {
+  // Ctrl + space -> auto import
+  const [todos, setTodos] = useState([]);
+
+  // update
+  const handleUpdate = id => {
+    // logic
+    setTodos(
+      todos.map(todo => {
+        if (todo.id === id) {
+          // update and return
+          const updatedTodo = { ...todo };
+          updatedTodo.completed = !updatedTodo.completed;
+          return updatedTodo;
+        } else {
+          return todo;
+        }
+      })
+    );
+  };
+
+  // delete
+  const handleDelete = id => {
+    // logic
+    setTodos(todos.filter(todo => todo.id !== id));
+  };
+
+  const handleAdd = title => {
+    // id: auto
+    // completed: false
+    const newTodo = {
+      id: new Date().getTime(),
+      title: title,
+      completed: false,
+    };
+
+    setTodos([newTodo, ...todos]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <AddTodo handleAdd={handleAdd} />
+      <Todos
+        todos={todos}
+        handleUpdate={handleUpdate}
+        handleDelete={handleDelete}
+      />
     </div>
   );
-}
+};
 
-export default App;
+// props == Parent to child

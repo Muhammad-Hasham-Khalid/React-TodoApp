@@ -1,13 +1,40 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.AddTodo {
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.AddTodo input {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.AddTodo button {
+  border: none;
+  background-color: steelblue;
+  color: white;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.Todo {
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+  background-color: cornflowerblue;
+  margin: 2px 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.Todo__deleteButton {
+  border: none;
+  color: white;
+  background-color: red;
+  padding: 5px;
+  cursor: pointer;
 }
